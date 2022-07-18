@@ -42,13 +42,13 @@ Parámetros URL:
 		 "category":1
 	 }
 ],
-	 "first_page_url":"http://mybsaletest.000webhostapp.com/api/list_product?page=1",
+	 "first_page_url":"https://mybsaletest.000webhostapp.com/api/list_product?page=1",
 	 "from":1,
 	 "last_page":10,
-	 "last_page_url":"http://mybsaletest.000webhostapp.com/api/list_product?page=10",
+	 "last_page_url":"https://mybsaletest.000webhostapp.com/api/list_product?page=10",
 	 "links":[],
-	 "next_page_url":"http://mybsaletest.000webhostapp.com/api/list_product?page=2",
-	 "path":"http://mybsaletest.000webhostapp.com/api/list_product",
+	 "next_page_url":"https://mybsaletest.000webhostapp.com/api/list_product?page=2",
+	 "path":"https://mybsaletest.000webhostapp.com/api/list_product",
 	 "per_page":6,
 	 "prev_page_url":null,
 	 "to":6,
@@ -132,9 +132,9 @@ Devuelve los filtros.
 Parámetros URL:
 + ``` ?id_category ```
 (Obligatorio) ID del catálogo de categorías.
-+ ``` &?page```
++ ``` ?page```
 (Opcional) Número de página.
-+ ``` &?filtro```
++ ``` ?filtro```
 (Opcional) Ordenar por:
 
    - NAME_ASC: Por nombre de forma ascendente
@@ -156,13 +156,13 @@ Parámetros URL:
 		 "category":1
 	 }
 ],
-	 "first_page_url":"http://mybsaletest.000webhostapp.com/api/list_product?page=1",
+	 "first_page_url":"https://mybsaletest.000webhostapp.com/api/list_product?page=1",
 	 "from":1,
 	 "last_page":10,
-	 "last_page_url":"http://mybsaletest.000webhostapp.com/api/list_product?page=10",
+	 "last_page_url":"https://mybsaletest.000webhostapp.com/api/list_product?page=10",
 	 "links":[],
-	 "next_page_url":"http://mybsaletest.000webhostapp.com/api/list_product?page=2",
-	 "path":"http://mybsaletest.000webhostapp.com/api/list_product",
+	 "next_page_url":"https://mybsaletest.000webhostapp.com/api/list_product?page=2",
+	 "path":"https://mybsaletest.000webhostapp.com/api/list_product",
 	 "per_page":6,
 	 "prev_page_url":null,
 	 "to":6,

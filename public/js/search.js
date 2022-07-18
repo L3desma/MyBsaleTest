@@ -14,7 +14,7 @@ $( ".buscar" ).autocomplete({
     $(".icon-container").css({"opacity":"1"});
     $.ajax({
       type:'GET',
-      url: 'http://mybsaletest.000webhostapp.com/api/search?filtro='+filter_search_now+"&campo="+$('.buscar').val()+"&category="+category_search,
+      url: 'https://mybsaletest.000webhostapp.com/api/search?filtro='+filter_search_now+"&campo="+$('.buscar').val()+"&category="+category_search,
       headers: {"Accept": "application/json"},
       dataType:"json",
       data: {
