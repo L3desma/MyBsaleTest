@@ -1,11 +1,10 @@
 //esperamos a que la pagina termine de cargar
 window.addEventListener("load", function(event) {
-    var filtro = localStorage.getItem('element_old_filter') || 'vacio';
-    get_categories();
-    if( filtro === 'vacio'){
-        ApiRest(1);
-    }else{
-
+    var filtro = localStorage.getItem('element_old_filter') || 'vacio';//obtenemos lo guardado en storage con el nombre de element_old_filter en caso de que no exista se tomara el valor por defecto de vacio
+    get_categories();//obtenemos las categorias
+    if( filtro === 'vacio'){//si es vacio
+        ApiRest(1);//obtenemos tosos los elementos sin ningun orden especifico
+    }else{//caso contrario se llama a los filtros pasandole como parametro el ultimo filtro que se selecciono
         filters(localStorage.getItem('element_old_filter'));
     }
 });
@@ -29,6 +28,7 @@ function animation_menu(x) {
      ocultar y mostrar menu
 */
 function nav_bar(){
+    //modificamos los parametros margin-lefth según sea el caso
     if(document.getElementById("sidebar").offsetWidth != 250){
         document.getElementById("sidebar").style.setProperty('margin-left', '-250px');
     }else{
@@ -43,6 +43,7 @@ function nav_bar(){
     listar produtos de forma desordenada
 */
 function ApiRest(page) {
+    //peticion get
     const request = new XMLHttpRequest();
     const endPonint = 'https://mybsaletest.000webhostapp.com/api/list_product?page='+page;
     request.open('GET',endPonint,true);
@@ -50,10 +51,10 @@ function ApiRest(page) {
     var content = '';
     request.onreadystatechange = function(){
         if(request.readyState === 4){
-            if(request.status === 200){
+            if(request.status === 200){//respuesta exitosa
                 const response = JSON.parse(request.response);
-                response.message.data.forEach((element,index,arr) => {
-
+                response.message.data.forEach((element,index,arr) => {//recorremos la respuesta del server
+                    //alamacenamos el la repsuesta en una carta que asu ves estara alamecado en la variable content
                     content +=
                     '<div class="col-md-6">'+
                         '<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">'+
@@ -76,13 +77,14 @@ function ApiRest(page) {
                     '</div>'
 
                 });
+                //seteamos el contenido de container por lo alamacenado en la variable content
                 document.getElementById("container").innerHTML = content;
-                document.getElementById("number-pagination").innerHTML = 'Pagina actual: '+response.message.current_page+'-'+response.message.last_page;
+                document.getElementById("number-pagination").innerHTML = 'Pagina actual: '+response.message.current_page+'-'+response.message.last_page;//setamos la pagian actual y el numero total de paginas
                 let totalPages = response.message.last_page;//total de paginas
                 let page = response.message.current_page;//pagina actual
                 document.querySelector(".pagination ul").innerHTML = createPagination(totalPages, page);
                 load();
-            }else{
+            }else{//en caso de que ocurra un error
                 error();
             }
         }
@@ -92,66 +94,69 @@ function ApiRest(page) {
     creacion de paginación
 */
 function createPagination(totalPages, page){
-    let liTag = '';
-    let active;
-    let beforePage;
-    let afterPage ;
-    if (totalPages==1) {
-      totalPages=0;
-      beforePage= 2;
-      afterPage= 1;
-    }if (totalPages==2) {
-       beforePage= page + 1;
-       afterPage= page + 1;
-    }
-    else {
-      beforePage = page - 1;
-      afterPage = page + 1;
-    }
-  if(page > 1){
+  let liTag = '';
+  let active;
+  let beforePage;
+  let afterPage ;
+  if (totalPages==1) {//si el total de paginas es 1 seteamos las variables
+    totalPages=0;
+    beforePage= 2;
+    afterPage= 1;
+  }if (totalPages==2) {//si el total de paginas es 2 agregamos 1 a beforepage y a afterpage
+     beforePage= page + 1;
+     afterPage= page + 1;
+  }
+  else {//caso contrario se resta 1 a beforepage y sumamos 1 a afterpage
+    beforePage = page - 1;
+    afterPage = page + 1;
+  }
+  if(page > 1){//caso contrario se resta 1 a beforepage y sumamos 1 a afterpage
     liTag += `<li class="btn prev" onclick="ApiRest(${page - 1})"><span><i class="fas fa-angle-left"></i> Anterior</span></li>`;
   }
-  if(page > 2){
+  if(page > 2){//si el valor de la página es inferior a 2, agregue 1 después del botón anterior
     liTag += `<li class="first numb" onclick="ApiRest(1)"><span>1</span></li>`;
-    if(page > 3){
+    if(page > 3){//si el valor de la página es mayor que 3, agregue esto (...) después del primer li o página
       liTag += `<li class="dots"><span>...</span></li>`;
     }
   }
+
+  //cuántas páginas o li se muestran antes del li actual
   if (page == totalPages) {
     beforePage = beforePage - 2;
   } else if (page == totalPages - 1) {
     beforePage = beforePage - 1;
   }
+  
   if (page == 1) {
     afterPage = afterPage + 2;
   } else if (page == 2) {
     afterPage  = afterPage + 1;
   }
   for (var plength = beforePage; plength <= afterPage; plength++) {
-    if (plength > totalPages) {
+    if (plength > totalPages) { // cuántas páginas o li se muestran después del li actual
       continue;
     }
-    if (plength == 0) {
+    if (plength == 0) {// si plength es 0 entonces agregue +1 en el valor de plength
       plength = plength + 1;
     }
-    if(page == plength){
+    if(page == plength){//si la página es igual a plength entonces asigne una cadena activa en la variable activa
       active = "active";
-    }else{
+    }else{//de lo contrario, deje vacío a la variable activa
       active = "";
     }
     liTag += `<li class="numb ${active}" onclick="ApiRest(${plength})"><span>${plength}</span></li>`;
   }
-  if(page < totalPages - 1){
-    if(page < totalPages - 2){
+  if(page < totalPages - 1){//si el valor de la página es menor que el valor de la página total en -1, muestre el último li o la última página
+    if(page < totalPages - 2){//si el valor de la página es menor que el valor de la página total en -2, agregue esto (...) antes del último li o página
       liTag += `<li class="dots"><span>...</span></li>`;
     }
     liTag += `<li class="last numb" onclick="ApiRest(${totalPages})"><span>${totalPages}</span></li>`;
   }
-  if (page < totalPages) {
+  if (page < totalPages) {//mostrar el botón siguiente  si el valor de la página es menor que totalPage(20)
     liTag += `<li class="btn next" onclick="ApiRest(${page + 1})"><span>Siguiente <i class="fas fa-angle-right"></i></span></li>`;
   }
   document.querySelector(".pagination ul").innerHTML = liTag;
-  return liTag;
+  return liTag;//retornamos litag
 }
 
 
@@ -160,9 +165,12 @@ function createPagination(totalPages, page){
 
 //error en repsuesta al api
 function error(){
+  //mostramos el alert error
   document.getElementById('alert-error').classList.remove("d-none");
 }
+//ocualtamos alaert
 function close_error_alert(){
+  //ocultamos el alert
   document.getElementById('alert-error').classList.add("d-none");
 }
 
