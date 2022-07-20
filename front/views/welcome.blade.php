@@ -69,11 +69,10 @@
         <header class="p-3 mb-3 border-bottom">
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-                    </a>
+
+                    
                     <!-- menu desplegable que contiene los filtros de busqueda -->
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="display: contents;">
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 " >
                         Buscar por:
                         <div class="dropdown">
                             <button id="filter_search_now" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nombre
@@ -113,22 +112,25 @@
                     <!--Buscar-->
 
                     <div class="caja justify-content-center d-flex">
-                        <span class="pointer pl4 c-link flex bg-white search_icon" type="button" id="button_search">
-                            <svg class="vtex__icon-search  " width="14" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" fill="none">
-                                <path d="M15.707 13.293L13 10.586C13.63 9.536 14 8.311 14 7C14 3.14 10.859 0 7 0C3.141 0 0 3.14 0 7C0 10.86 3.141 14 7 14C8.312 14 9.536 13.631 10.586 13L13.293 15.707C13.488 15.902 13.744 16 14 16C14.256 16 14.512 15.902 14.707 15.707L15.707 14.707C16.098 14.316 16.098 13.684 15.707 13.293ZM7 12C4.239 12 2 9.761 2 7C2 4.239 4.239 2 7 2C9.761 2 12 4.239 12 7C12 9.761 9.761 12 7 12Z" fill="currentColor">
-                                </path>
-                            </svg>
-                        </span>
-                        <input
-                        type="search"
-                        class="form-control form-control-dark buscar"
-                        placeholder="Buscar"
-                        id="buscar"
-                        aria-label="Search"
-                        required/>
-                        <div class="icon-container">
-                            <i class="loader_m" ></i>
-                        </div>                      
+                       
+                            
+                            <span class="pointer pl4 c-link flex bg-white search_icon" type="button" id="button_search">
+                                <svg class="vtex__icon-search  " width="14" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" fill="none">
+                                    <path d="M15.707 13.293L13 10.586C13.63 9.536 14 8.311 14 7C14 3.14 10.859 0 7 0C3.141 0 0 3.14 0 7C0 10.86 3.141 14 7 14C8.312 14 9.536 13.631 10.586 13L13.293 15.707C13.488 15.902 13.744 16 14 16C14.256 16 14.512 15.902 14.707 15.707L15.707 14.707C16.098 14.316 16.098 13.684 15.707 13.293ZM7 12C4.239 12 2 9.761 2 7C2 4.239 4.239 2 7 2C9.761 2 12 4.239 12 7C12 9.761 9.761 12 7 12Z" fill="currentColor">
+                                    </path>
+                                </svg>
+                            </span>
+                    
+                            <input
+                            type="search"
+                            class="form-control form-control-dark buscar"
+                            placeholder="Buscar"
+                            id="buscar"
+                            aria-label="Search"
+                            required/>
+                            <div class="icon-container">
+                                <i class="loader_m" ></i>
+                            </div>                      
                     </div>
                 </div>
             </div>
@@ -184,6 +186,7 @@
                             </li>
                         </ul>
                     </li>
+                    <h3>Categorias</h3>
                     <!-- categorias de los productos -->
                     <li id="categories">
                         <!-- categorias creados desde javascript -->
@@ -192,10 +195,10 @@
             </nav>
 
             <!-- Page Content -->
-            <div id="content" style="width: inherit;">
+            <div id="content" >
                 <!-- imagen css de barra lateral -->
                 <div class="col">
-                    <div type="Button" onclick="animation_menu(this)" style="width: fit-content; margin-left:1%">
+                    <div type="Button" onclick="animation_menu(this)" class="menu_icon">
                         <div class="bar1"></div>
                         <div class="bar2"></div>
                         <div class="bar3"></div>
