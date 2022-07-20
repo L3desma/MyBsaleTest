@@ -3,15 +3,15 @@
 
 Vista inicial del proyecto, donde se muestran las cartas de los productos en paginación de 6 en 6.
 
-![Paginia princiapal!](/public/img/front/pagination.gif)
+![Paginia princiapal!](/back/img/front/pagination.gif)
 
 La página cuenta con un menú lateral en donde el usuario podrá escoger algún filtro y categoría para ordenar los productos, todo esto sin perder la paginación.
 
-![Paginia princiapal!](/public/img/front/menu_lateral.gif)
+![Paginia princiapal!](/back/img/front/menu_lateral.gif)
 
 La barra de búsqueda cuenta con filtros y categorías, esto nos devolverá los productos que coincidan en forma de lista, al hacer clic este nos arrojara un modal en donde podremos ver el producto.
 
-![Paginia princiapal!](/public/img/front/busqueda.gif)
+![Paginia princiapal!](/back/img/front/busqueda.gif)
 
 
 # API REST
